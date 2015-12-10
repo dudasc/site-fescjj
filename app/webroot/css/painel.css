@@ -1,0 +1,146 @@
+@charset "utf-8";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin,latin-ext);
+body {
+	font-family: "Open Sans";
+}
+#pagina {
+	margin: 0 auto;
+	width: 80%;
+}
+header {
+	width: 100%;
+	height: auto;
+	overflow: auto;
+	border-bottom: 1px solid #ccc;
+}
+#conteudo {
+	width: 100%;
+	margin-top: 15px;
+	overflow: auto;
+}
+section {
+	width: 100%;
+}
+nav {
+	width: 22%;
+	float: left;
+	margin-right: 3%;
+}
+#principal {
+	width: 75%;
+	float: left;
+}
+footer {
+	margin-top: 80px;
+	border-top: 1px solid #ccc;
+	width: 100%;
+}
+#logout {
+	float: right;
+	margin-top: 20px;
+}
+p {
+	padding: 4px;
+}
+iframe{
+	width: 200px !important;
+	height: 180px !important;
+}
+h1 {
+	font-size: 24px;
+}
+label {
+	font-weight: bolder;
+}
+.titulo {
+	font-size: 28px;
+	font-weight: bolder;
+	color: #666;
+	padding: 20px 0px 20px 0px;
+	float: left;
+}
+h2 {
+	font-size: 20px;
+	color: #666;
+}
+.nav {
+	border: 1px solid #F2F2F2;
+	border-radius: 6px;
+}
+nav ul li a {
+	border-bottom: 1px solid #F2f2f2;
+	padding: 8px !important;
+}
+nav ul li:first-child > a, nav ul li:first-child > a.active {
+	-webkit-border-radius: 6px 6px 0 0;
+	-moz-border-radius: 6px 6px 0 0;
+	border-radius: 6px 6px 0 0;
+}
+nav ul li:last-child > a, nav ul li:last-child > a.active {
+	-webkit-border-radius: 0 06px 6px;
+	-moz-border-radius: 0 0 6px 6px;
+	border-radius: 0 0 6px 6px;
+}
+textarea{
+	margin: 0 !important;
+	padding: 0 !important;
+}
+#album{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+#album li{
+	display: inline-block;
+	margin: 1px;
+}
+#album li img{
+	opacity: 1;
+	-webkit-opacity: 1;
+	-moz-opacity: 1;
+}
+#album li img:hover{
+	transition:all 0.2s linear;
+	opacity: 0.5;
+	-webkit-opacity: 0.5;
+	-moz-opacity: 0.5;
+}
+
+#dados-atleta{
+	float: left;
+}
+#dados-atleta strong.nome{
+	font-size:18px;
+}
+#dados-atleta p{
+	line-height: 170%;
+	font-size:16px;
+}
+.foto-atleta{
+	float: left;
+	border: 4px solid #ccc;
+	margin-right: 1%;
+}
+
+span.red{
+	color:#F00;
+	font-weight: bolder;
+}
+
+span.green{
+	color: #090;
+	font-weight: bolder;
+}
+
+/***********CLEARFIX**************/
+.clearfix::before, .clearfix::after {
+	content: "";
+	display: table;
+}
+.clearfix::after {
+	clear: both;
+}
+.clearfix {
+ *zoom: 1;
+}
+/***********CLEARFIX**************/
