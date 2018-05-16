@@ -42,7 +42,7 @@ public $order = array('nome' => 'ASC');
 				),
 				'isUnique' => array(
 					'rule' => 'isUnique',
-					'message' => 'CPF já cadastrado'
+					'message' => 'RG já cadastrado'
 				)
 			),		
 		'data_nasc'=> 

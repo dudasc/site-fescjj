@@ -3,14 +3,16 @@
 body {
 	font-family: "Open Sans";
 }
+
+.nav-list{
+	background: #F2F2F2 !important;
+}
+/*
 #pagina {
 	margin: 0 auto;
 	width: 80%;
 }
-header {
-	width: 100%;
-	height: auto;
-	overflow: auto;
+.header {
 	border-bottom: 1px solid #ccc;
 }
 #conteudo {

@@ -20,7 +20,7 @@ class UsersController extends AppController {
 				return $this -> redirect($this -> Auth -> redirect());
 			} else {
 				
-				$this -> Session -> setFlash(__('<div class="alert alert-error">
+				$this -> Session -> setFlash(__('<div class="alert alert-danger">
 							<button type="button" class="close" data-dismiss="alert">&times;</button>
 							Usuário ou senha incorretos. 
 						  </div>'));

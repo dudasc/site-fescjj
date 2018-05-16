@@ -3,48 +3,51 @@
 <?php
  echo $this -> Form -> create('Noticia', array('action' => 'add', 'type' => 'file', 'enctype'=>"multipart/form-data"), array('admin' => true));
 ?>
-  <div class="control-group">
-  <label class="control-label" for="inputData">Data</label>
-    <div class="controls">
+  
+  <label for="inputData">Data</label>
+  <div class="form-group">
 		<?php echo $this->Form->input('data', array('label' => false,
 											'value'=> date('d-m-Y'),
 											 'disabled' => 'disabled',
+											 'class' => 'form-control',
 											'type' => 'text',
 											'id' =>"inputData"
 											)
 										);?>
       
     </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="inputTitulo">Título</label>
-    <div class="controls">
+ 
+  
+    <label for="inputTitulo">Título</label>
+    <div class="form-group">
+    
 		<?php echo $this->Form->input('titulo', array('label' => false,
 											'placeholder'=>"titulo", 
 											'required' => 'required',
 											'type' => 'text',
 											'id' =>"inputTitulo",
-											'class' => 'input-xxlarge')
+											'class' => 'input-xxlarge form-control')
 										);?>
       
     </div>
-  </div>
-  <div class="control-group">
-  <label class="control-label" for="inputDescricao">Descrição</label>
-    <div class="controls">
+  
+  
+  <labelfor="inputDescricao">Descrição</label>
+ <div class="form-control">
 		<?php echo $this->Form->textarea('descricao', array('label' => false,
 											'placeholder'=>"descrição",
 											'required' => 'required', 
 											'type' => 'text',
 											'id' =>"inputDescricao",
 											'rows' => '20',
-											'class'=> 'input-xxlarge jqte'
+											'class'=> 'input-xxlarge form-control tinymce'
 											)
 										);?>
-  </div>    
-  <div class="control-group">
-    <label class="control-label" for="inputImagem">Imagem</label>
-    <div class="controls">
+										</div>
+      
+  
+    <label  for="inputImagem">Imagem</label>
+    <div class="form-group">
      <?php 
 		if(empty($this->request->data ['Noticia']['imagem'])){
 			echo $this -> Html -> image('small_sem_img.jpg', array("alt" => ""));
@@ -53,25 +56,25 @@
 		}
 		?>
     </div>
-    <div class="controls">
+    <div class="form-group">
       <?php echo @$this->Form->file('imagem', array('label' => false,
 
 											
 											'id' =>"inputImagem",
+											'class' => 'form-control'
 											)
 										);?>
     </div>
-    <div class="controls">
+    <div class="form-control">
     	<p>Tipos de arquivo: jpg/jpeg<br>Tamanho máximo: 2Mb</p>
     </div>
-  </div>
   
   
-  <div class="control-group">
-    <div class="controls">
+  
+    
       
-<?php  echo $this->Form->submit('Salvar notícia', array('class'=>'btn'));?>
-    </div>
-  </div>
+<?php  echo $this->Form->Button('Salvar notícia', array('type' => 'submit','class'=>'btn btn-default'));?>
+<?php  echo $this->Form->end();?>
+   
   
-  </form>
+  

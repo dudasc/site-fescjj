@@ -1,7 +1,6 @@
 <h3>Atletas filiados</h3>
 
 <?php echo $this->Session->flash(); ?> 
-<div id="tab">
   <table id="tab" class="table table-hover table-bordered table-striped">
     <thead>
     	<tr>

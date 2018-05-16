@@ -36,7 +36,7 @@ class Noticia extends AppModel {
 						 //'resize' => array(90,90) 
                     ),                    
                     'medium' => array(                  	                                                             
-						 'resize' => array(360,360)
+						 'adaptiveResize' => array(360,200)
                     ),
 					'normal' => array('resize' => array(800,600))
                 )

@@ -1,4 +1,4 @@
-<ul>				
+<ul class="nav navbar-nav navbar-right" >				
 	<li>
 <?php echo $this->Html->link('Início', array('controller' => 'pages', 'action' => 'home'), array('alt' => 'Página inicial', 'title' => 'Página inicial'));?>
     </li>			

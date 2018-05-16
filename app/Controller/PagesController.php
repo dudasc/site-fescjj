@@ -54,7 +54,7 @@ class PagesController extends AppController {
 	public function display() {
 		$opcoes = array(
 			'fields' => array('id', 'titulo', 'imagem', 'data'), 
-			'limit' => 4,
+			'limit' => 5,
 			'order' => array('data' => 'DESC', 'id' => 'DESC'),
 			//'conditions' => array('id != (SELECT max(id) FROM noticias)')
 		);

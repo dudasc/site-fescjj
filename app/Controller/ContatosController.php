@@ -36,9 +36,19 @@ class ContatosController extends AppController {
 				$this -> Email -> from = $name . '<' . $from . '>';
 	
 				if ($this -> Email -> send($msg)) {
-					$this -> Session -> setFlash('<p class="email-ok">Sua mensagem foi enviada com sucesso!</p>');
+					$this->Session->setFlash('<div class="alert alert-success">
+								<button type="button" class="close" data-dismiss="alert">
+									&times;
+								</button>
+								Sua mensagem foi enviada com sucesso.
+						  </div>', 'default');	
 				} else {
-					$this -> Session -> setFlash('<p class="email-erro">Ocorreu um erro ao enviar e-mail.</p>');
+					$this->Session->setFlash('<div class="alert alert-danger">
+								<button type="button" class="close" data-dismiss="alert">
+									&times;
+								</button>
+								Erro ao enviar mensagem.
+						  </div>', 'default');	
 				}
 			//}else{
 			//	$this -> Session -> setFlash('<p class="email-erro">Ocorreu um erro ao enviar e-mail.</p>');

@@ -236,7 +236,7 @@ public function setup(Model $model, $settings = Array()){
     /**/
 
     /* -- Callbacks -- */
-	public function beforeValidate(Model $model, $options = Array()){
+    public function beforeValidate(Model $model, $options = Array()){
     //public function beforeValidate(&$model){
         foreach($this->__files as $field => $options){
             $array = array();
@@ -244,7 +244,7 @@ public function setup(Model $model, $settings = Array()){
             $model->validate = Set::merge($model->validate, $array);
         }
     }
-	public function beforeSave(Model $model, $options = Array()){
+    public function beforeSave(Model $model, $options = Array()){
     //public function beforeSave(&$model){
         $data = $model->data[$model->alias];
         foreach($this->__files as $field => $options){
@@ -267,11 +267,11 @@ public function setup(Model $model, $settings = Array()){
         }
         return true;
     }
-	public function afterSave(Model $model, $idCreated, $options = Array()){
+    public function afterSave(Model $model, $idCreated, $options = Array()){
     //public function afterSave($isCreated){
         $this->__deleteFiles();
     }
-	public function beforeDelete(Model $model, $cascade = true){
+    public function beforeDelete(Model $model, $cascade = true){
     //public function beforeDelete(){
         foreach($this->__files as $field => $options){
             $arquivo = $this->__model->read($field);
@@ -293,7 +293,7 @@ public function setup(Model $model, $settings = Array()){
      * Se foi criado algum thumbnail ele adiciona
      * ao array do arquivo o nome do thumbnail.
      */
-	 public function afterFind(Model $model, $data, $primary = false){
+     public function afterFind(Model $model, $data, $primary = false){
     //public function afterFind(&$model, $data){
         foreach($this->__files as $field => $options){
             for( $a=0; $a<count($data); $a++){
@@ -343,14 +343,20 @@ public function setup(Model $model, $settings = Array()){
         if(file_exists($path)){
             $name = time().$name;
         }
-        return $name;
+        return $name.".jpg";
     }
     /**
-     * Remove caracteres especiais e retorna em minusculo
+     * Remove caracteres especiais e retorna em minusculo e gera um nome randomico
      */
     private function __cleanName($string){
-       $string = ereg_replace("[^a-zA-Z0-9_.]", "", $string);
-       $string = strtolower($string);
+        $tamanho = mt_rand(10,20);
+        $all_str = "abcdefghijlkmnopqrstuvxyzw1234567890";
+        $string = "";
+        for ($i = 0;$i <= $tamanho;$i++){
+           $string .= $all_str[mt_rand(0,35)];
+        }
+        // $string = ereg_replace("[^a-zA-Z0-9_.]", "", $string);
+        //$string = strtolower($string);
        return $string;
     }
 
@@ -400,7 +406,7 @@ public function setup(Model $model, $settings = Array()){
      * @param array $setting
      */
     private function __generateThumbnail($file, $dir, $prefix = null, $setting = array()){
-    	//App::import('Vendor','phpthumb', array('file' => 'phpThumb' . DS . 'phpthumb.class.php'));
+        //App::import('Vendor','phpthumb', array('file' => 'phpThumb' . DS . 'phpthumb.class.php'));
         App::import('Vendor','phpthumb', array('file' => 'phpThumb'.DS.'ThumbLib.inc.php'));
         $path = $dir.DS.$file;
         $thumb = PhpThumbFactory::create($path);

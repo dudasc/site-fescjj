@@ -3,10 +3,9 @@
 class AtletasController extends AppController {
 
     public $name = 'Atletas';  
-
-public $paginate = array('Atleta' => array('limit' => 12));
+	public $paginate = array('Atleta' => array('limit' => 12));
 	
-function beforeFilter() {
+	function beforeFilter() {
         parent::beforeFilter();
     }
 	
@@ -38,7 +37,13 @@ function beforeFilter() {
 				$this->Session->write('atletaId', $atleta[0]['Atleta']['id']); //inicia a sessão com o id do atleta
 				$this->redirect('editar'); //redireciona para a página de edição			
 			}else{
-				$this->Session->setFlash('<p class="msg-erro">Dados não conferem</p>');	//se o atleta não existe mostra a mensagem			
+				$this->Session->setFlash('<div class="alert alert-danger">
+								<button type="button" class="close" data-dismiss="alert">
+									&times;
+								</button>
+								Dados não conferem. 
+						  </div>', 'default');	
+				//se o atleta não existe mostra a mensagem			
 			}
 		}		
 	}
@@ -46,7 +51,12 @@ function beforeFilter() {
 	public function editar(){
 		//verifica se a sessão não está iniciada e redireciona para pagina de validação			
 		if ($this->Session->check('atletaId') == false) {
-				$this->Session->setFlash('<p class="msg-erro">Informe seus dados</p>');
+				$this->Session->setFlash('<div class="alert alert-warning">
+								<button type="button" class="close" data-dismiss="alert">
+									&times;
+								</button>
+								Informe seus dados. 
+						  </div>', 'default');	
 				$this->redirect('valida');			
 		}else{
 			//se a sessão existe pega o valor dela
@@ -61,10 +71,21 @@ function beforeFilter() {
 				$this->request->data['Atleta']['academia'] = ucwords(strtolower($this->data['Atleta']['academia']));
 				$this->request->data['Atleta']['professor'] = ucwords(strtolower($this->data['Atleta']['professor']));
 				//atualiza os dados do atleta
-				if ($this->Atleta->save($this->request->data)) {	
-					$this->Session->setFlash('<p class="msg-ok">Dados alterados com sucesso.</p>');											
+				if ($this->Atleta->save($this->request->data)) {
+					$this->Session->setFlash('<div class="alert alert-success">
+								<button type="button" class="close" data-dismiss="alert">
+									&times;
+								</button>
+								Dados alterados com sucesso. 
+						  </div>', 'default');												
 				} else {
-					$this->Session->setFlash('<p class="msg-erro">Erro ao alterar cadastro. Verifique seus dados e tente novamente. </p>');
+					$this->Session->setFlash('<div class="alert alert-warning">
+								<button type="button" class="close" data-dismiss="alert">
+									&times;
+								</button>
+								Erro ao alterar cadastro. Verifique seus dados e tente novamente. 
+						  </div>', 'default');	
+					
 				}	
 				$this->redirect($this->referer());		
 			}				 
@@ -116,11 +137,21 @@ function beforeFilter() {
 		if ($this->Atleta->exists()) {
 			if ($this->request->is('post')) {			
 				if ($this->Atleta->delete($this->Atleta->id)) {
-					$this->Session->setFlash('<p class="msg-ok">Seus dados foram excluídos com sucesso.</p>');
+					$this->Session->setFlash('<div class="alert alert-success">
+								<button type="button" class="close" data-dismiss="alert">
+									&times;
+								</button>
+								dados excluídos com sucesso. 
+						  </div>', 'default');	
 					$this->Session->destroy('atletaId');	
 					$this->redirect('valida');
 				}else{
-					$this->Session->setFlash('<p class="msg-ok">Erro ao excluir dados.</p>');	
+					$this->Session->setFlash('<div class="alert alert-danger">
+								<button type="button" class="close" data-dismiss="alert">
+									&times;
+								</button>
+								Erro ao excluir dados. 
+						  </div>', 'default');	
 				}						
 			}
 		}
@@ -139,9 +170,20 @@ function beforeFilter() {
 			$this->request->data['Atleta']['academia'] = ucwords(strtolower($this->data['Atleta']['academia']));
 			$this->request->data['Atleta']['professor'] = ucwords(strtolower($this->data['Atleta']['professor']));			
 			if ($this->Atleta->save($this->data)) {
-				$this->Session->setFlash('<p class="msg-ok">Dados cadastrados com sucesso. Após avaliação de seu cadastro, sua filiação será efetivada.</p>');					
+				$this->Session->setFlash('<div class="alert alert-success">
+								<button type="button" class="close" data-dismiss="alert">
+									&times;
+								</button>
+								Dados cadastrados com sucesso. Após avaliação de seu cadastro, sua filiação será efetivada.
+						  </div>', 'default');	
+								
 			} else {
-				$this->Session->setFlash('<p class="msg-erro">Erro ao efetuar cadastro. Verifique seus dados e tente novamente. </p>');
+				$this->Session->setFlash('<div class="alert alert-danger">
+								<button type="button" class="close" data-dismiss="alert">
+									&times;
+								</button>
+								Erro ao efetuar cadastro. Verifique seus dados e tente novamente.
+						  </div>', 'default');	
 			}
 		}		
 	}    
